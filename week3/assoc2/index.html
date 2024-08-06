@@ -11,15 +11,12 @@
   <h2>Australian Prime Ministers</h2>
   <h3>Query</h3>
 
-
   <form method="get" action="results.php">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name"><br>
-    <label for="year">Year:</label>
-    <input type="text" id="year" name="year" ><br>
-    <label for="state">State:</label>
-    <input type="text" id="state" name="state"><br>
-    <input type="submit" value="Search">
+    <table>
+      <tr><td>Search: </td><td><input type="text" name="query"></td></tr>
+      <tr><td colspan=2><input type="submit" value="Search">
+                        <input type="reset" value="Reset"></td></tr>
+    <table>
   </form>
 
   <hr>

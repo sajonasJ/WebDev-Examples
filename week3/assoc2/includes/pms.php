@@ -34,4 +34,4 @@ $pms = array(
     array('index' => '26', 'name' => 'Kevin Rudd', 'from' => '3 December 2007', 'to' => '24 June 2010', 'party' => 'Labor', 'duration' => '2 years, 6 months, 21 days', 'state' => ' Queensland'),
     array('index' => '27', 'name' => 'Julia Gillard', 'from' => '24 June 2010', 'to' => 'Incumbent', 'party' => 'Labor', 'duration' => '2 years, 8 months, 6 days', 'state' => ' Victoria')
 );
-
+?>

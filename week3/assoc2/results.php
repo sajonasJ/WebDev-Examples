@@ -5,27 +5,12 @@
  * BAD STYLE: Does not use templates.  Interleaves PHP and HTML.
  */
 include "includes/defs.php";
+$query = $_GET['query'];
 
-/* Get form data. */
-$name = $_GET['name'];
-$year = $_GET['year'];
-$state = $_GET['state'];
-$error = '';
+$pms = search($query);
 
-
-
-/* Validate form data. */
-if (empty($name) && empty($year) && empty($state)) {
-  $error = "At least one field must contain value.";
-} elseif (!empty($year) && !ctype_digit($year)) {
-  $error = "Year must be a number.";
-}
-
-$pms = [];
-if (empty($error)) {
-  $pms = search($name, $year, $state);
-}
 ?>
+
 <!-- display results -->
 <!DOCTYPE html>
 <!-- Results page of associative array search example. -->
@@ -43,11 +28,11 @@ if (empty($error)) {
 
   <?php
   if (count($pms) == 0) {
-  ?>
+    ?>
     <p>No results found.</p>
-  <?php
+    <?php
   } else {
-  ?>
+    ?>
     <table class="bordered">
       <thead>
         <tr>
@@ -69,20 +54,12 @@ if (empty($error)) {
         ?>
       </tbody>
     </table>
-  <?php
+    <?php
   }
   ?>
 
   <p><a href="index.html">New search</a></p>
-  <form method="get" action="results.php">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name"><br>
-    <label for="year">Year:</label>
-    <input type="text" id="year" name="year"><br>
-    <label for="state">State:</label>
-    <input type="text" id="state" name="state"><br>
-    <input type="submit" value="Search">
-  </form>
+
   <hr>
   <p>
     Sources:
