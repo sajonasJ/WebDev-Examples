@@ -6,42 +6,43 @@ include "pms.php";
 
 /* Search sample data for $name or $year or $state from form. */
 function search($name, $year, $state) {
-    global $pms; 
+    global $pms;
+    $results = $pms;
 
     // Filter $pms by $name
     if (!empty($name)) {
-		$results = array();
-		foreach ($pms as $pm) {
-			if (stripos($pm['name'], $name) !== FALSE) {
-				$results[] = $pm;
-			}
-		}
-		$pms = $results;
+        $filtered = array();
+        foreach ($results as $pm) {
+            if (stripos($pm['name'], $name) !== FALSE) {
+                $filtered[] = $pm;
+            }
+        }
+        $results = $filtered;
     }
 
     // Filter $pms by $year
-    if (!empty($year)) {
-		$results = array();
-		foreach ($pms as $pm) {
-			if (strpos($pm['from'], $year) !== FALSE || 
-				strpos($pm['to'], $year) !== FALSE) {
-				$results[] = $pm;
-			}
-		}
-		$pms = $results;
+	if (!empty($year)) {
+        $filtered = array();
+        foreach ($results as $pm) {
+            if (strpos($pm['from'], $year) !== FALSE || 
+                strpos($pm['to'], $year) !== FALSE) {
+                $filtered[] = $pm;
+            }
+        }
+        $results = $filtered;
     }
 
     // Filter $pms by $state
     if (!empty($state)) {
-		$results = array();
-		foreach ($pms as $pm) {
-			if (stripos($pm['state'], $state) !== FALSE) {
-				$results[] = $pm;
-			}
-		}
-		$pms = $results;
-	}
+        $filtered = array();
+        foreach ($results as $pm) {
+            if (stripos($pm['state'], $state) !== FALSE) {
+                $filtered[] = $pm;
+            }
+        }
+        $results = $filtered;
+    }
 
-    return $pms;
+    return $results;
 }
 

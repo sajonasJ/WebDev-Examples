@@ -13,7 +13,6 @@ $state = $_GET['state'];
 $error = '';
 
 
-
 /* Validate form data. */
 if (empty($name) && empty($year) && empty($state)) {
   $error = "At least one field must contain value.";
@@ -21,10 +20,8 @@ if (empty($name) && empty($year) && empty($state)) {
   $error = "Year must be a number.";
 }
 
-$pms = [];
-if (empty($error)) {
-  $pms = search($name, $year, $state);
-}
+$pms = search($name, $year, $state);
+
 ?>
 <!-- display results -->
 <!DOCTYPE html>
@@ -42,7 +39,11 @@ if (empty($error)) {
   <h3>Results</h3>
 
   <?php
-  if (count($pms) == 0) {
+  if (!empty($error)) {
+  ?>
+    <p style="color: red;"><?php echo $error; ?></p>
+  <?php
+  } elseif (count($pms) == 0) {
   ?>
     <p>No results found.</p>
   <?php
